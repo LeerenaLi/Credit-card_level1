@@ -49,16 +49,16 @@ const formControl = () => {
     const inputHolder = document.querySelector('#cardHolder');
     const inputNumber = document.querySelector('#cardNumber');
     const inputDate = document.querySelector('#cardDate');
+    inputDate.dataset.mask = 'mm/yy';
+
+    inputHolder.maxLength = 30;
+    inputHolder.pattern = /[A-Za-zА-Яа-яЁё]/;
 
     const numberMask = new CreditCardInputMask({
         element: inputNumber,
         pattern: '{{9999}} {{9999}} {{9999}} {{9999}}',
     });
 
-    const dateMask = new CreditCardInputMask({
-        element: inputDate,
-        pattern: '{{1}}{{2}} / {{99}}',
-    });
 
     const cvvMask = new CreditCardInputMask({
         element: document.querySelector('.input__cvv'),

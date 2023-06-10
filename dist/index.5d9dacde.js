@@ -648,13 +648,12 @@ const formControl = ()=>{
     const inputHolder = document.querySelector("#cardHolder");
     const inputNumber = document.querySelector("#cardNumber");
     const inputDate = document.querySelector("#cardDate");
+    inputDate.dataset.mask = "mm/yy";
+    inputHolder.maxLength = 30;
+    inputHolder.pattern = /[A-Za-zА-Яа-яЁё]/;
     const numberMask = new (0, _creditCardInputMaskDefault.default)({
         element: inputNumber,
         pattern: "{{9999}} {{9999}} {{9999}} {{9999}}"
-    });
-    const dateMask = new (0, _creditCardInputMaskDefault.default)({
-        element: inputDate,
-        pattern: "{{1}}{{2}} / {{99}}"
     });
     const cvvMask = new (0, _creditCardInputMaskDefault.default)({
         element: document.querySelector(".input__cvv"),
