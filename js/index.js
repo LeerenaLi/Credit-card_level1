@@ -50,8 +50,9 @@ const formControl = () => {
     const inputNumber = document.querySelector('#cardNumber');
     const inputDate = document.querySelector('#cardDate');
     inputDate.dataset.mask = 'mm/yy';
+    inputDate.maxLength = 5;
 
-    inputHolder.maxLength = 30;
+    inputHolder.maxLength = 26;
     inputHolder.pattern = /[A-Za-zА-Яа-яЁё]/;
 
     const numberMask = new CreditCardInputMask({
