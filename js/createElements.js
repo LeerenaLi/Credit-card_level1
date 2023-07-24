@@ -1,5 +1,4 @@
 import {el, setChildren} from 'redom';
-import CreditCardInputMask from 'credit-card-input-mask';
 
 const createForm = () => {
     const form = el('form', {className: 'form', id: 'form', action: '#'},
@@ -15,13 +14,14 @@ const createForm = () => {
         el('div', {className: 'form__input-wrap form__input-wrap_cvv'},
             el('label', {className: 'form__label form__cvv-label'}, 'CVV'),
             el('input', {className: 'input input__cvv', type: 'text'})),
-        el('button', {className: 'form__button'}, 'CHECK OUT'),
+        el('button', {className: 'form__button', id: 'valid-btn'}, 'Validation'),
+        el('h2', {className: 'form__title'}, 'validation result'),
     );
 
     return form;
 };
 
-const createCard = () => {
+export const createCard = () => {
     const wrapper = el('div', {className: 'wrapper'});
 
     const card = el('div', {className: 'card'},
@@ -39,43 +39,3 @@ const createCard = () => {
     setChildren(wrapper, card);
     return wrapper;
 };
-
-
-const formControl = () => {
-    const form = document.querySelector('#form');
-    const outputNumber = document.querySelector('.card__number');
-    const outputPersone = document.querySelector('.card__name');
-    const outputDate = document.querySelector('.card__date');
-    const inputHolder = document.querySelector('#cardHolder');
-    const inputNumber = document.querySelector('#cardNumber');
-    const inputDate = document.querySelector('#cardDate');
-    inputDate.dataset.mask = 'mm/yy';
-    inputDate.maxLength = 5;
-
-    inputHolder.maxLength = 26;
-    inputHolder.pattern = /[A-Za-zА-Яа-яЁё]/;
-
-    const numberMask = new CreditCardInputMask({
-        element: inputNumber,
-        pattern: '{{9999}} {{9999}} {{9999}} {{9999}}',
-    });
-
-
-    const cvvMask = new CreditCardInputMask({
-        element: document.querySelector('.input__cvv'),
-        pattern: '{{9}}{{9}}{{9}}',
-    });
-
-    form.addEventListener('input', () => {
-        outputNumber.textContent = inputNumber.value;
-        outputPersone.textContent = inputHolder.value;
-        outputDate.textContent = inputDate.value;
-    });
-};
-
-const init = () => {
-    setChildren(document.body, createCard());
-    formControl();
-};
-
-init();

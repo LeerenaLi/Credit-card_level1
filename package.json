@@ -2,13 +2,20 @@
   "name": "credit_card-1lvl",
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "test:unit": "jest",
+    "test": "npm i && jest"
   },
   "dependencies": {
     "credit-card-input-mask": "^3.0.0",
     "redom": "^3.29.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.22.9",
+    "@babel/preset-env": "^7.22.9",
+    "babel-jest": "^29.6.1",
+    "jest": "^29.6.1",
+    "jest-environment-jsdom": "^29.6.1",
     "parcel": "^2.9.2"
   }
 }

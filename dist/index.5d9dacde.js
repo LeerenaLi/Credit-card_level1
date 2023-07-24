@@ -574,105 +574,16 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"1Z4Rq":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _createElements = require("./createElements");
 var _redom = require("redom");
-var _creditCardInputMask = require("credit-card-input-mask");
-var _creditCardInputMaskDefault = parcelHelpers.interopDefault(_creditCardInputMask);
-const createForm = ()=>{
-    const form = (0, _redom.el)("form", {
-        className: "form",
-        id: "form",
-        action: "#"
-    }, (0, _redom.el)("div", {
-        className: "form__input-wrap form__input-wrap_holder"
-    }, (0, _redom.el)("label", {
-        className: "form__label form__holder-label"
-    }, "Card Holder"), (0, _redom.el)("input", {
-        className: "input input__holder",
-        type: "text",
-        id: "cardHolder"
-    })), (0, _redom.el)("div", {
-        className: "form__input-wrap form__input-wrap_number"
-    }, (0, _redom.el)("label", {
-        className: "form__label form__number-label"
-    }, "Card Number"), (0, _redom.el)("input", {
-        className: "input input__number",
-        id: "cardNumber"
-    })), (0, _redom.el)("div", {
-        className: "form__input-wrap form__input-wrap_date"
-    }, (0, _redom.el)("label", {
-        className: "form__label form__date-label"
-    }, "Card Expiry"), (0, _redom.el)("input", {
-        className: "input input__date",
-        type: "text",
-        id: "cardDate"
-    })), (0, _redom.el)("div", {
-        className: "form__input-wrap form__input-wrap_cvv"
-    }, (0, _redom.el)("label", {
-        className: "form__label form__cvv-label"
-    }, "CVV"), (0, _redom.el)("input", {
-        className: "input input__cvv",
-        type: "text"
-    })), (0, _redom.el)("button", {
-        className: "form__button"
-    }, "CHECK OUT"));
-    return form;
-};
-const createCard = ()=>{
-    const wrapper = (0, _redom.el)("div", {
-        className: "wrapper"
-    });
-    const card = (0, _redom.el)("div", {
-        className: "card"
-    }, (0, _redom.el)("p", {
-        className: "secure"
-    }, "Secure Checkout"), (0, _redom.el)("div", {
-        className: "credit-card"
-    }, (0, _redom.el)("span", {
-        className: "card__number"
-    }, "xxxx xxxx xxxx xxxx"), (0, _redom.el)("div", {
-        className: "card__personal"
-    }, (0, _redom.el)("span", {
-        className: "card__name"
-    }, "John Doe"), (0, _redom.el)("span", {
-        className: "card__date"
-    }, "04/24"))), createForm());
-    (0, _redom.setChildren)(wrapper, card);
-    return wrapper;
-};
-const formControl = ()=>{
-    const form = document.querySelector("#form");
-    const outputNumber = document.querySelector(".card__number");
-    const outputPersone = document.querySelector(".card__name");
-    const outputDate = document.querySelector(".card__date");
-    const inputHolder = document.querySelector("#cardHolder");
-    const inputNumber = document.querySelector("#cardNumber");
-    const inputDate = document.querySelector("#cardDate");
-    inputDate.dataset.mask = "mm/yy";
-    inputDate.maxLength = 5;
-    inputHolder.maxLength = 26;
-    inputHolder.pattern = /[A-Za-zА-Яа-яЁё]/;
-    const numberMask = new (0, _creditCardInputMaskDefault.default)({
-        element: inputNumber,
-        pattern: "{{9999}} {{9999}} {{9999}} {{9999}}"
-    });
-    const cvvMask = new (0, _creditCardInputMaskDefault.default)({
-        element: document.querySelector(".input__cvv"),
-        pattern: "{{9}}{{9}}{{9}}"
-    });
-    form.addEventListener("input", ()=>{
-        outputNumber.textContent = inputNumber.value;
-        outputPersone.textContent = inputHolder.value;
-        outputDate.textContent = inputDate.value;
-    });
-};
+var _formControl = require("./formControl");
 const init = ()=>{
-    (0, _redom.setChildren)(document.body, createCard());
-    formControl();
+    (0, _redom.setChildren)(document.body, (0, _createElements.createCard)());
+    (0, _formControl.formControl)();
 };
 init();
 
-},{"redom":"iahd6","credit-card-input-mask":"bO9Hm","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iahd6":[function(require,module,exports) {
+},{"redom":"iahd6","./createElements":"9ENC7","./formControl":"cInMM"}],"iahd6":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "List", ()=>List);
@@ -1179,7 +1090,129 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"bO9Hm":[function(require,module,exports) {
+},{}],"9ENC7":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "createCard", ()=>createCard);
+var _redom = require("redom");
+const createForm = ()=>{
+    const form = (0, _redom.el)("form", {
+        className: "form",
+        id: "form",
+        action: "#"
+    }, (0, _redom.el)("div", {
+        className: "form__input-wrap form__input-wrap_holder"
+    }, (0, _redom.el)("label", {
+        className: "form__label form__holder-label"
+    }, "Card Holder"), (0, _redom.el)("input", {
+        className: "input input__holder",
+        type: "text",
+        id: "cardHolder"
+    })), (0, _redom.el)("div", {
+        className: "form__input-wrap form__input-wrap_number"
+    }, (0, _redom.el)("label", {
+        className: "form__label form__number-label"
+    }, "Card Number"), (0, _redom.el)("input", {
+        className: "input input__number",
+        id: "cardNumber"
+    })), (0, _redom.el)("div", {
+        className: "form__input-wrap form__input-wrap_date"
+    }, (0, _redom.el)("label", {
+        className: "form__label form__date-label"
+    }, "Card Expiry"), (0, _redom.el)("input", {
+        className: "input input__date",
+        type: "text",
+        id: "cardDate"
+    })), (0, _redom.el)("div", {
+        className: "form__input-wrap form__input-wrap_cvv"
+    }, (0, _redom.el)("label", {
+        className: "form__label form__cvv-label"
+    }, "CVV"), (0, _redom.el)("input", {
+        className: "input input__cvv",
+        type: "text"
+    })), (0, _redom.el)("button", {
+        className: "form__button",
+        id: "valid-btn"
+    }, "Validation"), (0, _redom.el)("h2", {
+        className: "form__title"
+    }, "validation result"));
+    return form;
+};
+const createCard = ()=>{
+    const wrapper = (0, _redom.el)("div", {
+        className: "wrapper"
+    });
+    const card = (0, _redom.el)("div", {
+        className: "card"
+    }, (0, _redom.el)("p", {
+        className: "secure"
+    }, "Secure Checkout"), (0, _redom.el)("div", {
+        className: "credit-card"
+    }, (0, _redom.el)("span", {
+        className: "card__number"
+    }, "xxxx xxxx xxxx xxxx"), (0, _redom.el)("div", {
+        className: "card__personal"
+    }, (0, _redom.el)("span", {
+        className: "card__name"
+    }, "John Doe"), (0, _redom.el)("span", {
+        className: "card__date"
+    }, "04/24"))), createForm());
+    (0, _redom.setChildren)(wrapper, card);
+    return wrapper;
+};
+
+},{"redom":"iahd6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cInMM":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "formControl", ()=>formControl);
+var _creditCardInputMask = require("credit-card-input-mask");
+var _creditCardInputMaskDefault = parcelHelpers.interopDefault(_creditCardInputMask);
+var _validate = require("./validate");
+const formControl = ()=>{
+    const outputNumber = document.querySelector(".card__number");
+    const outputPersone = document.querySelector(".card__name");
+    const outputDate = document.querySelector(".card__date");
+    const inputHolder = document.querySelector("#cardHolder");
+    const inputNumber = document.querySelector("#cardNumber");
+    const inputDate = document.querySelector("#cardDate");
+    const inputSvv = document.querySelector(".input__cvv");
+    const validatoinButton = document.querySelector("#valid-btn");
+    const title = document.querySelector(".form__title");
+    inputHolder.addEventListener("input", ()=>{
+        inputHolder.maxLength = 24;
+        inputHolder.value = inputHolder.value.replace(/[^a-zа-я\s]/gi, "");
+        outputPersone.textContent = inputHolder.value;
+    });
+    inputNumber.addEventListener("input", ()=>{
+        const numberMask = new (0, _creditCardInputMaskDefault.default)({
+            element: inputNumber,
+            pattern: "{{9999}} {{9999}} {{9999}} {{9999}}"
+        });
+        outputNumber.textContent = inputNumber.value;
+    });
+    inputDate.addEventListener("input", ()=>{
+        inputDate.dataset.mask = "mm/yy";
+        inputDate.maxLength = 5;
+        outputDate.textContent = inputDate.value;
+    });
+    inputSvv.addEventListener("input", ()=>{
+        const cvvMask = new (0, _creditCardInputMaskDefault.default)({
+            element: inputSvv,
+            pattern: "{{9}}{{9}}{{9}}"
+        });
+    });
+    validatoinButton.addEventListener("click", ()=>{
+        if ((0, _validate.validateHolder)(inputHolder.value) && (0, _validate.validateNumber)(inputNumber.value) && (0, _validate.validateCvv)(inputSvv.value)) {
+            title.textContent = "the Сard data is valid";
+            title.style.color = "green";
+        } else {
+            title.textContent = "the Card data is not valid";
+            title.style.color = "red";
+        }
+    });
+};
+
+},{"credit-card-input-mask":"bO9Hm","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./validate":"kedNO"}],"bO9Hm":[function(require,module,exports) {
 "use strict";
 var RestrictedInput = require("5b7da5c00506f039");
 module.exports = RestrictedInput;
@@ -2234,6 +2267,25 @@ var NoopKeyboardStrategy = /** @class */ function(_super) {
 }(strategy_interface_1.StrategyInterface);
 exports.NoopKeyboardStrategy = NoopKeyboardStrategy;
 
-},{"69678c37e1e62446":"eR489"}]},["iNGHL","1Z4Rq"], "1Z4Rq", "parcelRequire7921")
+},{"69678c37e1e62446":"eR489"}],"kedNO":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "validateHolder", ()=>validateHolder);
+parcelHelpers.export(exports, "validateNumber", ()=>validateNumber);
+parcelHelpers.export(exports, "validateCvv", ()=>validateCvv);
+const validateHolder = (str)=>{
+    const holderRegexp = /^[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
+    return holderRegexp.test(str);
+};
+const validateNumber = (str)=>{
+    const numberRegexp = /^\d{4}\s\d{4}\s\d{4}\s\d{4}$/;
+    return numberRegexp.test(str);
+};
+const validateCvv = (str)=>{
+    const cvvRegexp = /^\d{3,4}$/;
+    return cvvRegexp.test(str);
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["iNGHL","1Z4Rq"], "1Z4Rq", "parcelRequire7921")
 
 //# sourceMappingURL=index.5d9dacde.js.map
